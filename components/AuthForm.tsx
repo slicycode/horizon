@@ -35,14 +35,15 @@ const AuthForm = ({ type }: { type: "sign-in" | "sign-up" }) => {
 
     try {
       if (type === "sign-up") {
-        // const newUser = await signUp(data);
-        // setUser(newUser);
+        const newUser = await signUp(data);
+        setUser(newUser);
       } else {
-        // const existingUser = await signIn({
-        //   email: data.email,
-        //   password: data.password,
-        // });
-        // if (existingUser) router.push("/");
+        const existingUser = await signIn({
+          email: data.email,
+          password: data.password,
+        });
+
+        if (existingUser) router.push("/");
       }
     } catch (error) {
       console.error(error);
